@@ -1,0 +1,40 @@
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #00ab8b;
+    color: #fff
+    position:absolute;
+    left:0;
+    z-index:-1;
+}
+
+.header__section{
+    display: flex;
+    align-items: center;
+}
+
+.header__item{
+    padding: 10px 15px;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.header__item:hover{
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+}
+
+.headerButton{
+    cursor: pointer;
+}
+
+.cars__page{
+    color: black;
+    text-decoration: none;
+}

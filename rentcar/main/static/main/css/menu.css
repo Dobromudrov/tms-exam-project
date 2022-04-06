@@ -1,0 +1,60 @@
+.nav__menu {
+    width:960px;
+    margin: 0 auto;
+}
+
+.nav__menu:before {
+    content:'';
+    display:block;
+    height: 50px;
+    width: 100%;
+    background:#00ab8b;
+    position:absolute;
+    left:0;
+    z-index:-1;
+}
+
+.nav__list {
+    margin:0;
+    padding: 0;
+    list-style:none;
+    height:50px;
+}
+
+.nav__list li {
+    float:left;
+}
+
+.nav__list li a{
+    color: white;
+    display: block;
+    height: 50px;
+    padding:0 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 50px;
+}
+
+.nav__list li a:hover {
+  background: #000000;
+}
+
+.non_list_style{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    height:50px;
+}
+
+.cat__cars{
+    color: black;
+    list-style:none;
+    text-transform:uppercase;
+    text-decoration:none;
+}
+
+.selected{
+    color:green;
+
+
+}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type = "text/css" href="{% static 'main/css/style.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'main/images/logo.jpg' %}" type="image/x-icon"/>
+</head>
+<body>
+
+	<div class="header">
+		<div class="header__section">
+			<div class="header__item headerButton"><a href="{% url 'index' %}">Главная</a></div>
+			<div class="header__item headerButton"><a href="{% url 'cars' %}">Прокат Авто</a></div>
+			<div class="header__item headerButton"><a href="{% url 'conditions' %}">Условия Аренды</a></div>
+			<div class="header__item headerButton"><a href="{% url 'about' %}">О нас</a></div>
+		</div>
+		<div class="header__section">
+			<div class="header__item headerButton"><a href="#">Войти</a></div>
+			<div class="header__item headerButton"><a href="#">Регистрация</a></div>
+		</div>
+	</div>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

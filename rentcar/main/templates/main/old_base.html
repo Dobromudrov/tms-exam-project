@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type = "text/css" href="{% static 'main/css/menu.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'main/images/logo.jpg' %}" type="image/x-icon"/>
+</head>
+<body>
+
+
+<nav>
+	<ul>
+		<li><a href="{% url 'index' %}">Главная</a></li>
+		<li><a href="{% url 'cars' %}">Прокат Авто</a></li>
+		<li><a href="{% url 'conditions' %}">Условия Аренды</a></li>
+		<li><a href="{% url 'about' %}">О нас</a></li>
+        <li><a>Войти</a></li>
+	    <li><a>Регистрация</a></li>
+	</ul>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+
+
+<!--{% block mainmenu %}-->
+<!--<ul>-->
+<!--    {% for m in menu %}-->
+<!--    <li>{{ m }}</li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+<!--{% endblock mainmenu %}-->

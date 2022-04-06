@@ -1,0 +1,101 @@
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #00ab8b;
+    color: #fff
+    position:absolute;
+    left:0;
+    z-index:-1;
+}
+
+.header__section{
+    display: flex;
+    align-items: center;
+}
+
+.header__item{
+    padding: 10px 15px;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.header__item:hover{
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
+}
+
+.headerButton{
+    cursor: pointer;
+}
+
+.cars__page{
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+старое оформление
+
+
+nav {
+    width:960px;
+    margin: 0 auto;
+}
+
+nav:before {
+    content:'';
+    display:block;
+    height: 50px;
+    width: 100%;
+    background:#00ab8b;
+    position:absolute;
+    left:0;
+    z-index:-1;
+}
+
+ul {
+    margin:0;
+    padding: 0;
+    list-style:none;
+    height:50px;
+}
+
+ul li {
+    float:left;
+}
+
+ul li a{
+  color: white;
+  display: block;
+  height: 50px;
+  padding:0 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 50px;
+}
+
+ul li a:hover {
+  background: #000000;
+}
+
+
+
