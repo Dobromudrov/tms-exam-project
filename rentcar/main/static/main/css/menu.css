@@ -1,4 +1,4 @@
-.nav__menu {
+nav__menu {
     width:960px;
     margin: 0 auto;
 }
@@ -43,7 +43,15 @@
     margin:0;
     padding: 0;
     list-style: none;
-    height:50px;
+    height:80px;
+}
+
+.text_left{
+    text-align: left;
+}
+
+.image_right{
+    text-align: right;
 }
 
 .cat__cars{
@@ -55,6 +63,24 @@
 
 .selected{
     color:green;
-
-
 }
+
+.link_button {
+	text-align: center;
+}
+.link_button a {
+	padding: 10px;
+	min-width: 10px;
+	background: #00ab8b;
+	color: #fff;
+	text-decoration: none;
+}
+
+
+
+
+
+
+
+
+

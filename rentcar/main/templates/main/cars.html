@@ -3,12 +3,6 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-<!--Тут я добавляю шаблон для категорий-->
-
-
-
-
-
 
 
 <nav class="cat__cars">
@@ -26,17 +20,19 @@
 	{% endif %}
 {% endfor %}
 </nav>
+
+
 <ul class="non_list_style">
     {% for p in posts %}
 
         <h2>{{ p.title }}</h2>
-        <p>{{ p.content }}</p>
-
+        <h3><p class="text_left">{{ p.content | linebreaks}}</p></h3>
 
 </ul>
 
 {% if p.photo %}
-    <p><img src="{{ p.photo.url}}"></p>
+    <p class="image_right"><img src="{{ p.photo.url}}"></p>
+	<p class="link_button"><a href="{{ p.get_absolute_url }}">Подробнее</a></p>
 	<hr>
 {% endif %}
 

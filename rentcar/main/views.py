@@ -1,14 +1,27 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-
-
 from .models import *
-menu = ["Главная", "Прокат Авто", "Условия Аренды","О нас"]
-# Меню через цикл (в проекте не используется)
+
+menu = [{'title': 'Главная страница', 'url_name': 'index'},
+    {'title': 'Прокат Авто', 'url_name': 'cars'},
+    {'title': 'Условия Аренды', 'url_name': 'conditions'},
+    {'title': 'О нас', 'url_name': 'about'},
+    {'title': 'Добавить машину', 'url_name': 'add_cars'},
+    {'title': 'Регистрация', 'url_name': 'register'},
+    {'title': 'Войти', 'url_name': 'login'},
+
+]
+
+# menu = ["Главная", "Прокат Авто", "Условия Аренды", "О нас", "Добавить Машину", "Войти"]
 
 
 def index(request):
-    return render(request, 'main/index.html', {'menu': menu, 'title': 'Главная страница'})
+    context = {
+        'menu': menu,
+        'title': 'Главная страница'
+    }
+    return render(request, 'main/index.html', context=context)
+    # return render(request, 'main/index.html', {'menu': menu, 'title': 'Главная страница'})
 
 
 def cars(request):
@@ -31,6 +44,23 @@ def conditions(request):
 
 def about(request):
     return render(request, 'main/about.html', {'menu': menu, 'title': 'О нас'})
+
+
+def add_cars(request):
+    return HttpResponse("Добавить машину")
+
+
+def show_post(request, post_id):
+    # return HttpResponse(f"Отображение статьи с id = {post_id}")
+    post = get_object_or_404(CarsTable, pk=post_id)
+
+    context= {
+        'post': post,
+        'menu': menu,
+        'title': post.title,
+        'cat_selected': post.cat_id,
+    }
+    return render(request, 'main/post.html', context=context)
 
 
 def show_category(request, cat_id):

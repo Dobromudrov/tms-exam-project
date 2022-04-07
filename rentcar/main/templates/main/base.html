@@ -9,20 +9,47 @@
 </head>
 <body>
 
+{% block mainmenu %}
+		<nav class="nav__menu">
+			<ul class="nav__list">
 
-<nav class="nav__menu">
-	<ul class="nav__list">
-		<li><a href="{% url 'index' %}">Главная</a></li>
-		<li><a href="{% url 'cars' %}">Прокат Авто</a></li>
-		<li><a href="{% url 'conditions' %}">Условия Аренды</a></li>
-		<li><a href="{% url 'about' %}">О нас</a></li>
-        <li><a href="{% url 'login' %}">Войти</a></li>
-	    <li><a href="{% url 'register' %}">Регистрация</a></li>
-	</ul>
-</nav>
+{% for m in menu %}
+	{% if not forloop.last %}
+			<li><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+	{% else %}
+			<li class="last"><a href="{% url m.url_name %}">{{ m.title }}</a></li>
+	{% endif %}
+{% endfor %}
+			</ul>
+
+		</nav>
+{% endblock mainmenu %}
+
 
 {% block content %}
 {% endblock %}
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
