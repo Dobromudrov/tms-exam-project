@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+
 <h1>{{ title }}</h1>
 
 
@@ -31,11 +32,11 @@
 </ul>
 
 {% if p.photo %}
-    <p class="image_right"><img src="{{ p.photo.url}}"></p>
+    <p class="image_right"><img src="{{ p.photo.url }}"></p>
+
+{% endif %}
 	<p class="link_button"><a href="{{ p.get_absolute_url }}">Подробнее</a></p>
 	<hr>
-{% endif %}
-
     {% endfor %}
 
 {% endblock %}

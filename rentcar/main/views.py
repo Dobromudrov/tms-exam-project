@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 
+
 menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Прокат Авто', 'url_name': 'cars'},
     {'title': 'Условия Аренды', 'url_name': 'conditions'},
@@ -11,8 +12,6 @@ menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Войти', 'url_name': 'login'},
 
 ]
-
-# menu = ["Главная", "Прокат Авто", "Условия Аренды", "О нас", "Добавить Машину", "Войти"]
 
 
 def index(request):
@@ -50,11 +49,10 @@ def add_cars(request):
     return HttpResponse("Добавить машину")
 
 
-def show_post(request, post_id):
-    # return HttpResponse(f"Отображение статьи с id = {post_id}")
-    post = get_object_or_404(CarsTable, pk=post_id)
+def show_post(request, post_slug):
+    post = get_object_or_404(CarsTable, slug=post_slug)
 
-    context= {
+    context = {
         'post': post,
         'menu': menu,
         'title': post.title,
@@ -85,9 +83,4 @@ def register(request):
 def login(request):
     return HttpResponse('Авторизация')
 
-
-# class RegisterUser(DataMixin, CreateView):
-#     form_class = UserCreationForm
-#     template_name = main/register.html
-#     success_url = reverse_lazy('login')
 
