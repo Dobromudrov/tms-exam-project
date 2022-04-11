@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+
+from .forms import *
 from .models import *
 
 
@@ -46,7 +48,17 @@ def about(request):
 
 
 def add_cars(request):
-    return HttpResponse("Добавить машину")
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            try:
+                CarsTable.objects.create(**form.cleaned_data)
+                return redirect('cars')
+            except:
+                form.add_error(None, 'Ошибка! Проверьте введённые значения.')
+    else:
+        form = AddPostForm()
+    return render(request, 'main/addcars.html', {'form': form, 'menu': menu, 'title': 'Добавить машину'})
 
 
 def show_post(request, post_slug):
