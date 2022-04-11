@@ -49,13 +49,10 @@ def about(request):
 
 def add_cars(request):
     if request.method == 'POST':
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
-            try:
-                CarsTable.objects.create(**form.cleaned_data)
-                return redirect('cars')
-            except:
-                form.add_error(None, 'Ошибка! Проверьте введённые значения.')
+            form.save()
+            return redirect('cars')
     else:
         form = AddPostForm()
     return render(request, 'main/addcars.html', {'form': form, 'menu': menu, 'title': 'Добавить машину'})
