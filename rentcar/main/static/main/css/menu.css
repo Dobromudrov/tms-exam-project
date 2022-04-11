@@ -88,6 +88,12 @@ nav__menu {
     color: #CC0000
 }
 
+.post_image{
+	text-align: left;
+}
 
+.post_text{
+    text-align: right;
+}
 
 
