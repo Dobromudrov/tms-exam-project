@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView
 
 from .forms import *
 from .models import *
-
+from .utils import *
 
 menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Прокат Авто', 'url_name': 'cars'},
@@ -37,8 +37,9 @@ class CarsPage(ListView):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
         context['title'] = 'Прокат Авто'
-        context['cat_selected'] = 0
         context['cats'] = cats
+        context['cat_selected'] = 0
+
         return context
 
     def get_queryset(self):
@@ -126,9 +127,11 @@ class CarsCategory(ListView):
         return CarsTable.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        cats = Category.objects.all()
         context = super().get_context_data(**kwargs)
         context['title'] = 'Категория - ' + str(context['posts'][0].cat)
         context['menu'] = menu
+        context['cats'] = cats
         context['cat_selected'] = context['posts'][0].cat_id
         return context
 
