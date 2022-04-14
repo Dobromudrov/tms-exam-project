@@ -6,6 +6,7 @@ class CarsTableAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'cat', 'is_published', 'photo', 'time_create', 'time_update', 'slug')
     list_display_links = ('id', 'title', 'cat')
     search_fields = ('id', 'title',)
+    list_editable = ('is_published',)
     prepopulated_fields = {"slug": ("title",)}
 
 

@@ -1,15 +1,15 @@
 from django.urls import path
 from . import views
-
+from .views import *
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('cars/', views.cars, name='cars'),
+    path('cars/', CarsPage.as_view(), name='cars'),
     path('conditions/', views.conditions, name='conditions'),
     path('about/', views.about, name='about'),
-    path('add_cars/', views.add_cars, name='add_cars'),
-    path('cars/<slug:post_slug>/', views.show_post, name='post'),
-    path('category/<int:cat_id>/', views.show_category, name='category'),
+    path('add_cars/', AddCars.as_view(), name='add_cars'),
+    path('cars/<slug:post_slug>/', ShowPost.as_view(), name='post'),
+    path('category/<slug:cat_slug>/', CarsCategory.as_view(), name='category'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
 ]
