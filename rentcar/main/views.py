@@ -1,3 +1,5 @@
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -162,11 +164,32 @@ class CarsCategory(DataMixin, ListView):
 #     return render(request, 'main/cars.html', context=context)
 
 
-def register(request):
-    return HttpResponse('Регистрация')
+class RegisterUser(DataMixin, CreateView):
+    # form_class = UserCreationForm
+    # Стандартная форма регистрации от django
+    form_class = RegisterUserForm
+    template_name = 'main/register.html'
+    success_url = reverse_lazy('login')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Регистрация")
+        return dict(list(context.items()) + list(c_def.items()))
 
 
-def login(request):
-    return HttpResponse('Авторизация')
+class LoginUser(DataMixin, LoginView):
+    form_class = LoginUserForm
+    template_name = 'main/login.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация")
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_success_url(self):
+        return reverse_lazy('cars')
 
 
+def logout_user(request):
+    logout(request)
+    return redirect('login')
