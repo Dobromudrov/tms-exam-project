@@ -5,8 +5,6 @@ menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Условия Аренды', 'url_name': 'conditions'},
     {'title': 'О нас', 'url_name': 'about'},
     {'title': 'Добавить машину', 'url_name': 'add_cars'},
-    {'title': 'Регистрация', 'url_name': 'register'},
-    {'title': 'Войти', 'url_name': 'login'},
 ]
 
 
