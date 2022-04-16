@@ -4,9 +4,10 @@ from django.urls import reverse
 
 class CarsTable(models.Model):
     title = models.CharField(max_length=100, verbose_name='Модель Машины')
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL', null=True)
     content = models.TextField(blank=True, verbose_name='Описание')
     photo = models.ImageField(upload_to='photos/cars', verbose_name='Фото')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена | BYN', null=True)
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
     time_update = models.DateTimeField(auto_now=True, null=True, verbose_name='Обновлено')
     is_published = models.BooleanField(default=True, verbose_name='Статус Публикации')

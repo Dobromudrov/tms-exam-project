@@ -25,14 +25,15 @@
 <hr>
 <ul class="non_list_style">
     {% for p in posts %}
-        <h2>{{ p.title }}</h2>
+        <h2 style="height:50px;">{{ p.title }}</h2>
 		<h3><p>Комплектация:</p></h3>
-        <h3><p class="text_left">{{ p.content | linebreaks}}</p></h3>
-
+        <h3 style="height:270px;"><p>{{ p.content | linebreaks}}</p></h3>
+        <h2><p>Тариф на прокат {{ p.title }}:</p></h2>
+        <h3 style="background: #00ab8b; width: 10%;  height: 55px; position:absolute; padding-left: 30px;"><p>{{ p.price }} BYN/сутки</p></h3>
 </ul>
 
 {% if p.photo %}
-    <p class="image_right"><img src="{{ p.photo.url }}"></p>
+    <p style="text-align: right;"><img src="{{ p.photo.url }}"></p>
 
 {% endif %}
 	<p class="link_button"><a href="{{ p.get_absolute_url }}">Подробнее</a></p>

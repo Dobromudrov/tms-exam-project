@@ -16,7 +16,7 @@ from .models import *
 class AddPostForm(forms.ModelForm):
     class Meta:
         model = CarsTable
-        fields = ['title', 'slug', 'content', 'photo', 'is_published', 'cat']
+        fields = ['title', 'slug', 'content', 'price', 'photo', 'is_published', 'cat']
 
 
 class RegisterUserForm(UserCreationForm):
