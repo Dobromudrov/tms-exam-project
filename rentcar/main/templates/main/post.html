@@ -2,11 +2,15 @@
 
 {% block content %}
 <h1>{{post.title}}</h1>
+<hr>
 <div class="post_image">
 {% if post.photo %}
 <p><img src="{{post.photo.url}}"></p>
 {% endif %}
 </div>
-<div class="post_text">{{post.content|linebreaks}}</div>
-<div class="post_text">Price = {{ post.price }} руб/сутки</div>
+<div style="padding:0 800px;
+    margin-top: -580px"><big>{{post.content|linebreaks}}</big></div>
+<div style="padding:0 800px;
+    margin-top: 100px; height: 190px;"><big>Цена: {{ post.price }} руб/сутки</big></div>
+<p class="button_rent"><a href=#>Заказать машину</a></p>
 {% endblock %}

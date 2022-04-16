@@ -3,7 +3,7 @@ from .models import *
 menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Прокат Авто', 'url_name': 'cars'},
     {'title': 'Условия Аренды', 'url_name': 'conditions'},
-    {'title': 'О нас', 'url_name': 'about'},
+    {'title': 'Контакты', 'url_name': 'contacts'},
     {'title': 'Добавить машину', 'url_name': 'add_cars'},
 ]
 

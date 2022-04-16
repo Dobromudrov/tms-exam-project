@@ -69,11 +69,27 @@ nav__menu {
 	text-align: center;
 }
 .link_button a {
-	padding: 10px;
-	min-width: 10px;
+	padding:15px 30px;
+	min-width: 50px;
 	background: #00ab8b;
 	color: #fff;
 	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.button_rent{
+	text-align: center;
+}
+
+.button_rent a{
+    padding:15px 30px;
+	min-width: 50px;
+	background: #00ab8b;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-top: -20px;
+
 }
 
 .form_login{
@@ -107,4 +123,9 @@ nav__menu {
 .form-input {
     width: 300px;
     font-size: 16px;
+}
+
+.post_text{
+    padding:0 830px;
+    margin-top: -580px
 }
