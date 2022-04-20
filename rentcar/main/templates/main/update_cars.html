@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>Изменение поста</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form_error">{{ form.non_field_errors }}</div>
+
+{% for f in form %}
+<p><label class="form_login" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+<div class="form_error">{{ f.errors }}</div>
+{% endfor %}
+
+
+    <button type="submit">Сохранить изменения</button>
+</form>
+
+
+{% endblock %}

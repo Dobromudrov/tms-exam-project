@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from .forms import *
@@ -72,6 +72,36 @@ class AddCars(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Добавление машины")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class UpdatePost(PermissionRequiredMixin, DataMixin, UpdateView):
+    permission_required = ''
+    form_class = AddPostForm
+    model = CarsTable
+    template_name = 'main/update_cars.html'
+    slug_url_kwarg = 'post_slug'
+
+
+    # success_url = reverse_lazy('cars')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Изменение поста')
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class DeletePost(DataMixin, DeleteView):
+    model = CarsTable
+    template_name = 'main/delete_cars.html'
+    # form_class = AddPostForm
+    slug_url_kwarg = 'post_slug'
+    success_url = reverse_lazy('cars')
+    context_object_name = 'posts'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Удаление поста")
         return dict(list(context.items()) + list(c_def.items()))
 
 

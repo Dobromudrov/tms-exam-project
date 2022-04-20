@@ -13,4 +13,10 @@
 <div style="padding:0 800px;
     margin-top: 100px; height: 190px;"><big>Цена: {{ post.price }} BYN/сутки</big></div>
 <p class="button_rent"><a href=#>Заказать машину</a></p>
+{% if request.user.is_superuser %}
+<p class="button_edit_car"><a href='update'>Изменить</a></p>
+<p>&nbsp</p>
+<p class="button_delete_car"><a href='delete'>Удалить</a></p>
+{% endif %}
+
 {% endblock %}

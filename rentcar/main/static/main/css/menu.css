@@ -89,6 +89,34 @@ nav__menu {
 	text-decoration: none;
 	text-transform: uppercase;
 	margin-top: -20px;
+}
+
+.button_edit_car{
+    text-align: right;
+}
+
+.button_edit_car a{
+    padding:15px 50px;
+	min-width: 50px;
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-top: -20px;
+}
+
+.button_delete_car{
+    text-align: right;
+}
+
+.button_delete_car a{
+    padding:15px 56px;
+	min-width: 50px;
+	background: red;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-top: -20px;
 
 }
 
