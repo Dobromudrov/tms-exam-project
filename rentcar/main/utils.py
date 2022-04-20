@@ -14,7 +14,7 @@ class DataMixin:
         cats = Category.objects.all()
 
         user_menu = menu.copy()
-        if not self.request.user.is_authenticated:
+        if not self.request.user.is_superuser:
             user_menu.pop(4)
 
         context['menu'] = user_menu

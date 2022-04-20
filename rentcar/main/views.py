@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from .forms import *
 from .models import *
@@ -57,12 +57,14 @@ class ContactsPage(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class AddCars(LoginRequiredMixin, DataMixin, CreateView):
+class AddCars(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView):
+    permission_required = ''
     form_class = AddPostForm
     template_name = 'main/addcars.html'
     success_url = reverse_lazy('cars')
     # login_url = '/admin/'
-    login_url = reverse_lazy('index')
+    login_url = reverse_lazy('logins')
+    # login_url перенаправляет на указанную страницу, если ты не авторизован
     # "success_url" - при добавлении записи ты будушь перенаправлен на указанный url
     # "reverse_lazy" - построение маршрута только в момент, когда понадобится
     # если "success_url" закомментирована, значит перенаправление будет на добавленную запись (ссылка на себя)
@@ -73,11 +75,13 @@ class AddCars(LoginRequiredMixin, DataMixin, CreateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class ShowPost(DataMixin, DetailView):
+class ShowPost(LoginRequiredMixin, DataMixin, DetailView):
     model = CarsTable
     template_name = 'main/post.html'
     slug_url_kwarg = 'post_slug'
     context_object_name = 'post'
+    login_url = reverse_lazy('login')
+    # login_url перенаправляет на указанную страницу, если ты не авторизован
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -35,13 +35,10 @@
     <p style="text-align: right; height: 520px;"><img src="{{ p.photo.url }}"></p>
 
 {% endif %}
-	{% if request.user.is_authenticated %}
+
 	<p class="link_button"><a href="{{ p.get_absolute_url }}">Подробнее</a></p>
 	<hr>
-	{% else %}
-	<p style="color:white;">.</p>
-	<hr>
-	{% endif %}
+
     {% endfor %}
 
 {% endblock %}
