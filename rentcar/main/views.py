@@ -91,7 +91,8 @@ class UpdatePost(PermissionRequiredMixin, DataMixin, UpdateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class DeletePost(DataMixin, DeleteView):
+class DeletePost(PermissionRequiredMixin, DataMixin, DeleteView):
+    permission_required = ''
     model = CarsTable
     template_name = 'main/delete_cars.html'
     # form_class = AddPostForm
