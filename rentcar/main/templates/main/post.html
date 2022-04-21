@@ -12,7 +12,7 @@
     margin-top: -580px"><big>{{post.content|linebreaks}}</big></div>
 <div style="padding:0 800px;
     margin-top: 100px; height: 190px;"><big>Цена: {{ post.price }} BYN/сутки</big></div>
-<p class="button_rent"><a href=#>Заказать машину</a></p>
+<p class="button_rent"><a href='order'>Заказать машину</a></p>
 {% if request.user.is_superuser %}
 <p class="button_edit_car"><a href='update'>Изменить</a></p>
 <p>&nbsp</p>

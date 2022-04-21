@@ -41,3 +41,12 @@ class Category(models.Model):
         # единственное число
         verbose_name_plural = 'Категория Машин'
         # множественное число
+
+
+class OrderTable(models.Model):
+    # choice = models.ForeignKey('post', on_delete=models.PROTECT, null=True, verbose_name='Выбор')
+    choice = models.ForeignKey('CarsTable', on_delete=models.PROTECT, null=True, verbose_name='Машина')
+    phone_number = models.CharField(max_length=100, verbose_name='Номер телефона')
+    comment = models.TextField(max_length=100, verbose_name='Комментарий')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
+

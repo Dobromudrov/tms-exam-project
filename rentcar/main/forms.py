@@ -19,6 +19,12 @@ class AddPostForm(forms.ModelForm):
         fields = ['title', 'slug', 'content', 'price', 'photo', 'is_published', 'cat']
 
 
+class OrderPostForm(forms.ModelForm):
+    class Meta:
+        model = OrderTable
+        fields = ['choice', 'phone_number', 'comment']
+
+
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}))

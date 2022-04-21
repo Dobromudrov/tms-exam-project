@@ -5,6 +5,7 @@ menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Условия Аренды', 'url_name': 'conditions'},
     {'title': 'Контакты', 'url_name': 'contacts'},
     {'title': 'Добавить машину', 'url_name': 'add_cars'},
+    {'title': 'Заявки', 'url_name': 'application'},
 ]
 
 
@@ -15,7 +16,8 @@ class DataMixin:
 
         user_menu = menu.copy()
         if not self.request.user.is_superuser:
-            user_menu.pop(4)
+            del user_menu[4:6]
+
 
         context['menu'] = user_menu
 
