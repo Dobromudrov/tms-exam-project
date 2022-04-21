@@ -50,3 +50,9 @@ class OrderTable(models.Model):
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
 
+    class Meta:
+        verbose_name = 'Заявка клиента'
+        # единственное число
+        verbose_name_plural = 'Заявки клиентов'
+        # множественное число
+        ordering = ['-time_create', 'choice']
