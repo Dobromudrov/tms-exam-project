@@ -118,6 +118,29 @@ class ShowPost(LoginRequiredMixin, DataMixin, DetailView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
+class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
+    form_class = OrderPostForm
+    template_name = 'main/ordering.html'
+    success_url = reverse_lazy('cars')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Заказ машины")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class Application(PermissionRequiredMixin, DataMixin, ListView):
+    permission_required = ''
+    model = OrderTable
+    template_name = 'main/processing_of_applications.html'
+    context_object_name = 'posts'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Обработка заявок")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
 class CarsCategory(DataMixin, ListView):
     model = CarsTable
     template_name = 'main/cars.html'
@@ -167,42 +190,7 @@ def logout_user(request):
 
 
 
-class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
-    form_class = OrderPostForm
-    template_name = 'main/ordering.html'
-    success_url = reverse_lazy('cars')
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Заказ машины")
-        return dict(list(context.items()) + list(c_def.items()))
 
 
-class Application(PermissionRequiredMixin, DataMixin, ListView):
-    permission_required = ''
-    model = OrderTable
-    template_name = 'main/processing_of_applications.html'
-    context_object_name = 'posts'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title="Обработка заявок")
-        return dict(list(context.items()) + list(c_def.items()))
 
 
-# class AddCars(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView):
-#     permission_required = ''
-#     form_class = AddPostForm
-#     template_name = 'main/addcars.html'
-#     success_url = reverse_lazy('cars')
-#     # login_url = '/admin/'
-#     login_url = reverse_lazy('logins')
-#     # login_url перенаправляет на указанную страницу, если ты не авторизован
-#     # "success_url" - при добавлении записи ты будушь перенаправлен на указанный url
-#     # "reverse_lazy" - построение маршрута только в момент, когда понадобится
-#     # если "success_url" закомментирована, значит перенаправление будет на добавленную запись (ссылка на себя)
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         c_def = self.get_user_context(title="Добавление машины")
-#         return dict(list(context.items()) + list(c_def.items()))
