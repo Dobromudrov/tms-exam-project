@@ -130,6 +130,7 @@ class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
 
 
 class Application(PermissionRequiredMixin, DataMixin, ListView):
+    paginate_by = 3
     permission_required = ''
     model = OrderTable
     template_name = 'main/processing_of_applications.html'
