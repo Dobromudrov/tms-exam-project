@@ -18,7 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class OrderTableAdmin(admin.ModelAdmin):
-    list_display = ('choice', 'phone_number', 'comment', 'time_create')
+    list_display = ('choice', 'phone_number', 'comment', 'time_create', 'author')
 
 
 admin.site.register(CarsTable, CarsTableAdmin)

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 
 
 class CarsTable(models.Model):
@@ -48,6 +49,7 @@ class OrderTable(models.Model):
     choice = models.ForeignKey('CarsTable', on_delete=models.PROTECT, null=True, verbose_name='Машина')
     phone_number = models.CharField(max_length=100, verbose_name='Номер телефона')
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, verbose_name='Автор')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
 
     class Meta:
