@@ -6,8 +6,8 @@ menu = [{'title': 'Главная страница', 'url_name': 'index'},
     {'title': 'Контакты', 'url_name': 'contacts'},
     {'title': 'Добавить машину', 'url_name': 'add_cars'},
     {'title': 'Заявки', 'url_name': 'application'},
-    {'title': 'Обратная связь', 'url_name': 'feedback'},
     {'title': 'Обращения', 'url_name': 'feedback_list'},
+    {'title': 'Обратная связь', 'url_name': 'feedback'},
 ]
 
 
@@ -18,7 +18,7 @@ class DataMixin:
 
         user_menu = menu.copy()
         if not self.request.user.is_superuser:
-            del user_menu[4:6]
+            del user_menu[4:7]
         if not self.request.user.is_authenticated:
             user_menu.pop(4)
 

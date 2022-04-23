@@ -31,7 +31,6 @@ class FeedbackForm(forms.ModelForm):
         fields = ['email', 'comment']
 
 
-
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}))

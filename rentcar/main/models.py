@@ -52,6 +52,9 @@ class OrderTable(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, verbose_name='Автор')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
 
+    def __str__(self):
+        return self.choice
+
     class Meta:
         verbose_name = 'Заявка клиента'
         # единственное число
@@ -63,9 +66,14 @@ class OrderTable(models.Model):
 class FeedbackTable(models.Model):
     email = models.EmailField(max_length=100, verbose_name='Email')
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
+    time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
+
+    def __str__(self):
+        return self.email
 
     class Meta:
         verbose_name = 'Обратная связь'
         # единственное число
         verbose_name_plural = 'Обратная связь'
         # множественное число
+        ordering = ['-time_create']
