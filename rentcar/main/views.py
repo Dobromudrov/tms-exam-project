@@ -158,6 +158,29 @@ class CarsCategory(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
+class Feedback(DataMixin, CreateView):
+    form_class = FeedbackForm
+    template_name = 'main/feedback_form.html'
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Обратная связь")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class FeedbackList(LoginRequiredMixin, DataMixin, ListView):
+    paginate_by = 3
+    model = FeedbackTable
+    template_name = 'main/show_feedback.html'
+    context_object_name = 'posts'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Обращения")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
 class RegisterUser(DataMixin, CreateView):
     # form_class = UserCreationForm
     # Стандартная форма регистрации от django

@@ -21,7 +21,11 @@ class OrderTableAdmin(admin.ModelAdmin):
     list_display = ('choice', 'phone_number', 'comment', 'time_create', 'author')
 
 
+class FeedbackTableAdmin(admin.ModelAdmin):
+    list_display = ('email', 'comment')
+
+
 admin.site.register(CarsTable, CarsTableAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(OrderTable, OrderTableAdmin)
-
+admin.site.register(FeedbackTable, FeedbackTableAdmin)

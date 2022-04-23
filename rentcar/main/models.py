@@ -58,3 +58,14 @@ class OrderTable(models.Model):
         verbose_name_plural = 'Заявки клиентов'
         # множественное число
         ordering = ['-time_create', 'choice']
+
+
+class FeedbackTable(models.Model):
+    email = models.EmailField(max_length=100, verbose_name='Email')
+    comment = models.TextField(max_length=100, verbose_name='Комментарий')
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+        # единственное число
+        verbose_name_plural = 'Обратная связь'
+        # множественное число
