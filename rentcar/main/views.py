@@ -122,11 +122,16 @@ class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
     form_class = OrderPostForm
     template_name = 'main/ordering.html'
     success_url = reverse_lazy('cars')
+    model = OrderTable
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Заказ машины")
         return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class Application(PermissionRequiredMixin, DataMixin, ListView):

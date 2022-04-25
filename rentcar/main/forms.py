@@ -22,7 +22,7 @@ class AddPostForm(forms.ModelForm):
 class OrderPostForm(forms.ModelForm):
     class Meta:
         model = OrderTable
-        fields = ['choice', 'phone_number', 'comment', 'author']
+        fields = ['choice', 'phone_number', 'comment']
 
 
 class FeedbackForm(forms.ModelForm):
