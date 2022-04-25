@@ -9,6 +9,7 @@
     {% for p in posts %}
 
         <h3><p>Email: {{ p.email }}</p></h3>
+        <h3><p>Пользователь: @{{ p.author }}</p></h3>
         <h3><p>Комментарий: {{ p.comment }}</p></h3>
         <h3><p>Создано: {{ p.time_create }}</p></h3>
 

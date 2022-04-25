@@ -48,13 +48,10 @@ class Category(models.Model):
 class OrderTable(models.Model):
     # choice = models.ForeignKey('post', on_delete=models.PROTECT, null=True, verbose_name='Выбор')
     choice = models.ForeignKey('CarsTable', on_delete=models.PROTECT, null=True, verbose_name='Машина')
-    phone_number = models.CharField(max_length=100, verbose_name='Номер телефона')
+    phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
-
-    def __str__(self):
-        return self.choice
 
     class Meta:
         verbose_name = 'Заявка клиента'
@@ -67,10 +64,8 @@ class OrderTable(models.Model):
 class FeedbackTable(models.Model):
     email = models.EmailField(max_length=100, verbose_name='Email')
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', null=True)
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
-
-    def __str__(self):
-        return self.email
 
     class Meta:
         verbose_name = 'Обратная связь'
