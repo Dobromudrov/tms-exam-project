@@ -121,7 +121,7 @@ class ShowPost(LoginRequiredMixin, DataMixin, DetailView):
 class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
     form_class = OrderPostForm
     template_name = 'main/ordering.html'
-    success_url = reverse_lazy('cars')
+    success_url = reverse_lazy('feedback_re')
     model = OrderTable
 
     def get_context_data(self, *, object_list=None, **kwargs):
