@@ -47,7 +47,7 @@ class Category(models.Model):
 
 class OrderTable(models.Model):
     # choice = models.ForeignKey('post', on_delete=models.PROTECT, null=True, verbose_name='Выбор')
-    choice = models.ForeignKey('CarsTable', on_delete=models.PROTECT, null=True, verbose_name='Машина')
+    title = models.ForeignKey(CarsTable, on_delete=models.PROTECT, null=True, verbose_name='Машина')
     phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
@@ -58,7 +58,7 @@ class OrderTable(models.Model):
         # единственное число
         verbose_name_plural = 'Заявки клиентов'
         # множественное число
-        ordering = ['-time_create', 'choice']
+        ordering = ['-time_create', 'title']
 
 
 class FeedbackTable(models.Model):

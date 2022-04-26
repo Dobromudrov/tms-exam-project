@@ -122,7 +122,6 @@ class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
     form_class = OrderPostForm
     template_name = 'main/ordering.html'
     success_url = reverse_lazy('feedback_re')
-    model = OrderTable
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -131,6 +130,8 @@ class PostOrder(LoginRequiredMixin, DataMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        title = CarsTable.objects.get(slug=self.kwargs['post_slug'])
+        form.instance.title = title
         return super().form_valid(form)
 
 
