@@ -18,7 +18,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class OrderTableAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'title', 'phone_number', 'comment', 'time_create')
+    list_display = ('id', 'author', 'name', 'title', 'phone_number', 'comment', 'time_create')
+    # list_editable = ('name',)
 
 
 class FeedbackTableAdmin(admin.ModelAdmin):

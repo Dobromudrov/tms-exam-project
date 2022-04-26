@@ -49,6 +49,7 @@ class OrderTable(models.Model):
     # choice = models.ForeignKey('post', on_delete=models.PROTECT, null=True, verbose_name='Выбор')
     title = models.ForeignKey(CarsTable, on_delete=models.PROTECT, null=True, verbose_name='Машина')
     phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
+    name = models.CharField(max_length=30, verbose_name='Имя', null=True)
     comment = models.TextField(max_length=100, verbose_name='Комментарий')
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     time_create = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Создано')
